@@ -4,297 +4,616 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title> Markr </title>
-    <link rel="icon" href="A05/image/logo.png">
+    <title> Heyy! Maaaark </title>
+    <link rel="icon" href="projects/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+        crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Mulish:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
+        :root {
+            --bg: #fefae0;
+            --surface: #e9edc9;
+            --border: #ccd5ae;
+            --ink: #4a3728;
+            --muted: #8a7560;
+            --accent: #d4a373;
+            --warm: #d4a373;
+        }
+
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
+            margin: 0;
             padding: 0;
-            color: #2A3663;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
+            font-family: 'Mulish', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
             overflow-x: hidden;
-            width: 100%;
         }
 
-        .container,
-        .row,
-        .col {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 0;
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--ink);
         }
 
-        /* Navbar */
-        #nav-bar {
+        /* ── NAVBAR ── */
+        .navbar {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: .9rem 0;
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 100;
         }
 
-        .navbar-nav {
-            margin-left: auto;
-        }
-
-        .navbar {
-            background-image: linear-gradient(to right, #FAF6E3, #D8DBBD, #B59F78);
-            padding: 0%;
+        .navbar-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--ink) !important;
+            letter-spacing: -.3px;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
         }
 
         .navbar-brand img {
-            height: 80px;
-            padding-left: 50px;
+            height: 36px;
+            width: 36px;
+            object-fit: contain;
+            border-radius: 4px;
         }
 
-        .navbar-nav li {
-            padding: 0 10px;
+        .navbar-brand .dot {
+            color: var(--warm);
         }
 
-        .navbar-nav li a {
-            color: #2A3663;
-            font-weight: 500;
-            float: right;
-            text-align: left;
+        .nav-link {
+            font-size: .8rem;
+            font-weight: 600;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--muted) !important;
+            padding: .4rem .9rem !important;
+            transition: color .2s;
+        }
+
+        .nav-link:hover {
+            color: var(--ink) !important;
         }
 
         .navbar-toggler {
-            outline: none;
+            border: 1px solid var(--border);
+            padding: .35rem .55rem;
         }
 
-        /* Banner */
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%234a3728' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: var(--bg);
+                border-top: 1px solid var(--border);
+                padding: .75rem 0;
+                margin-top: .5rem;
+            }
+
+            .nav-link {
+                padding: .6rem 1rem !important;
+            }
+        }
+
+        /* ── HERO ── */
         #banner {
-            color: #2A3663;
-            padding-top: 10px;
+            padding: 7rem 0 5rem;
+            background:
+                radial-gradient(ellipse 55% 55% at 80% 40%, rgba(212, 163, 115, .2) 0%, transparent 65%),
+                var(--bg);
         }
 
-        .desc {
-            font-size: 20px;
-            text-align: center;
-        }
-
-        .name {
-            font-size: 60px;
+        .hero-tag {
+            display: inline-block;
+            font-size: .68rem;
             font-weight: 600;
-            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--warm);
+            border: 1px solid var(--warm);
+            padding: .3rem .8rem;
+            border-radius: 2px;
+            margin-bottom: 1.4rem;
         }
 
-        @media screen and (max-width: 576px) {
-            .name {
-                font-size: 30px;
-            }
+        .hero-name {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -1px;
+            margin-bottom: 1.4rem;
         }
 
-
-        .img-fluid {
-            max-width: 40%;
-            height: auto;
-            display: block;
-            margin: auto;
-            padding-top: 30px;
-            padding-bottom: 30px;
+        .hero-name em {
+            font-style: normal;
+            color: var(--accent);
         }
 
-        @media (max-width: 768px) {
-            .img-fluid {
-                max-width: 60%;
-            }
+        .hero-bio {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--muted);
+            max-width: 480px;
+            margin-bottom: 2rem;
         }
 
-        /* About */
-        .about {
-            background-image: linear-gradient(to right, #FAF6E3, #D8DBBD, #B59F78);
+        .hero-line {
+            width: 48px;
+            height: 2px;
+            background: var(--warm);
+            margin-bottom: 1.4rem;
         }
 
-        .profile-card {
+        .hero-img-col {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 200px;
-        }
-
-        .profile-detail {
-            margin: 5px 0;
-            font-size: 16px;
-            color: #2A3663;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
-        @media screen and (min-width: 1024px) {
-            section.about .container {
-                width: 75%;
-            }
+        .avatar-frame {
+            position: relative;
+            width: min(300px, 80vw);
+            aspect-ratio: 1;
         }
 
-        /* Projects */
-        @media screen and (min-width: 1024px) {
-            section [class^="container"] {
-                padding: 4rem;
-            }
-
-            nav [class^="container"] {
-                padding: 0 4rem;
-            }
+        .avatar-frame::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border: 1.5px solid var(--border);
+            border-radius: 50%;
         }
 
-        section:not(:first-of-type) {
-            text-align: center;
-        }
-
-        a {
-            color: #2A3663;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        a:not(.btn):hover {
-            color: #2A3663;
-        }
-
-        section .card,
-        .btn-outline-dark {
-            border: 2px solid #2A3663;
-            transition: all 0.4s;
-        }
-
-        .btn-outline-dark:hover {
-            box-shadow: 4px 4px #2A3663;
-        }
-
-        section .card {
-            max-width: 22rem;
-            margin-inline: auto;
+        .avatar-frame img {
+            width: 100%;
             height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            border: 4px solid var(--bg);
+            box-shadow: 0 12px 40px rgba(74, 55, 40, .15);
         }
 
-        /* Contact */
+        .avatar-fallback {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--surface), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            color: var(--bg);
+            border: 4px solid var(--bg);
+            box-shadow: 0 12px 40px rgba(74, 55, 40, .15);
+        }
+
+        /* ── ABOUT ── */
+        #about {
+            background: var(--surface);
+            padding: 5.5rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-size: .68rem;
+            font-weight: 600;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: var(--warm);
+            margin-bottom: .6rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: .15rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .info-label {
+            font-size: .68rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .info-value {
+            font-size: .95rem;
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .about-bio {
+            font-size: .97rem;
+            line-height: 1.85;
+            color: var(--muted);
+        }
+
+        /* Spotify */
+        .playlist-section {
+            margin-top: 4rem;
+        }
+
+        .playlist-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: .5rem;
+        }
+
+        .playlist-sub {
+            font-size: .9rem;
+            color: var(--muted);
+            max-width: 520px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        /* ── PROJECTS ── */
+        #projects {
+            padding: 5.5rem 0;
+            background: var(--bg);
+        }
+
+        .project-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            height: 100%;
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(74, 55, 40, .12);
+            border-color: var(--warm);
+        }
+
+        .project-card .card-img-top {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: var(--surface);
+        }
+
+        .project-card .card-body {
+            padding: 1.3rem;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+
+        .card-number {
+            font-size: .62rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--warm);
+            font-weight: 600;
+        }
+
+        .card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+
+        .card-text {
+            font-size: .85rem;
+            color: var(--muted);
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .btn-card {
+            display: inline-block;
+            font-size: .7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 2px;
+            padding: .4rem .9rem;
+            text-decoration: none;
+            transition: background .2s, color .2s;
+            align-self: flex-start;
+            margin-top: .4rem;
+        }
+
+        .btn-card:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* ── CONTACT ── */
         #contact {
-            background-image: linear-gradient(to right, #FAF6E3, #D8DBBD, #B59F78);
+            background: #faedcd;
+            padding: 4rem 0;
+        }
+
+        .contact-title {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            color: var(--ink);
+            margin-bottom: .5rem;
+        }
+
+        .contact-sub {
+            font-size: .9rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            color: var(--muted);
+            font-size: 1.1rem;
+            text-decoration: none;
+            margin: 0 .4rem;
+            transition: background .2s, color .2s, border-color .2s;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .footer-note {
+            font-size: .75rem;
+            color: var(--muted);
+            margin-top: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fu {
+            animation: fadeUp .65s ease both;
+        }
+
+        .fu1 {
+            animation-delay: .08s;
+        }
+
+        .fu2 {
+            animation-delay: .2s;
+        }
+
+        .fu3 {
+            animation-delay: .34s;
+        }
+
+        .fu4 {
+            animation-delay: .48s;
         }
     </style>
 </head>
 
+<body>
 
-<!-- Navbar -->
-<section id="nav-bar">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="A05/image/logo2.png"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- ═══════════ NAVBAR ═══════════ -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="projects/logo2.png" alt="logo" onerror="this.style.display='none'">
+                Markr<span class="dot">.</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#banner">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+            <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+                <ul class="navbar-nav gap-1">
+                    <li class="nav-item"><a class="nav-link" href="#banner">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-</section>
 
-<!-- Banner -->
-<section id="banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="A05/image/markpic.png" class="img-fluid">
-            </div>
-            <div class="col-md-6">
-                <p class="desc mt-5"> Hello, I am </p>
-                <p class="name p-1"> Mark Roland A. Gaiten </p>
-                <p class="desc"> A fourth-year Bachelor of Science in Information Technology student of Polytechnic
-                    University of the Philippines - Santo Tomas Campus, with a strong interest in Science and
-                    Technology. </p>
-            </div>
-        </div>
-    </div>
-</section>
+    <!-- ═══════════ HERO ═══════════ -->
+    <section id="banner">
+        <div class="container">
+            <div class="row align-items-center g-5">
 
-<!-- About -->
-<section class="about" id="about">
-    <div class="container">
-        <h2 class="display-5 fw-bold mb-4 mt-4 pt-4">About Me</h2>
-        <div class="row">
-            <div class="col-sm-6 profile-card">
-                <p class="profile-detail">
-                    <b>Full Name:</b> Mark Roland A. Gaiten
-                </p>
-                <p class="profile-detail">
-                    <b>Phone Number:</b> 0947-868-2766
-                </p>
-                <p class="profile-detail">
-                    <b>Email Address:</b> markgaiten26@gmail.com
-                </p>
-            </div>
-            <div class="col-sm-6 profile-detail p-2">
-                <p> A fourth-year Information Technology student with a strong interest in Science and Technology. An
-                    outgoing and curious individual for exploring new places, socializing, and learning new skills. I
-                    have a creative side that thrives in designing projects, from tech-related activities to personal
-                    hobbies like organizing layouts. Aiming to achieve financial stability, and advance my career while
-                    traveling and gaining new experiences. </p>
-            </div>
-        </div>
-    </div>
-</section>
+                <div class="col-lg-6 order-2 order-lg-1">
+                    <span class="hero-tag fu fu1">IT Student · PUP Santo Tomas</span>
+                    <h1 class="hero-name fu fu2">
+                        Hello, I'm<br>
+                        <em>Mark Roland</em><br>Gaiten.
+                    </h1>
+                    <div class="hero-line fu fu3"></div>
+                    <p class="hero-bio fu fu3">
+                        A fourth-year Bachelor of Science in Information Technology student at Polytechnic University of
+                        the
+                        Philippines — Santo Tomas Campus, with a strong interest in Science and Technology.
+                    </p>
+                </div>
 
-<!-- Works -->
-<section class="projects" id="projects">
-    <div class="container mb-3">
-        <h2 class="display-5 fw-bold mb-4 pt-2"> Projects </h2>
-        <div class="row">
-            <div class="col-lg-3 col-sm-6 mt-4">
-                <div class="card">
-                    <img src="A05/image/a05.png" class="card-img-top" alt="Trifold Brochure">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">Activity 5 | Core Memories </h5>
-                        <p class="card-text"> Welcome to the site where cherished core memories come alive, preserving moments that shape the essence of who we are. </p>
-                        <a href="A05/index.php" class="btn btn-outline-dark"> Click Here! </a>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img-col fu fu2">
+                    <div class="avatar-frame">
+                        <img src="projects/markpic.png" alt="Mark Roland Gaiten"
+                            onerror="this.outerHTML='<div class=\'avatar-fallback\'>MG</div>'">
                     </div>
                 </div>
+
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Contact -->
-<section class="text-center bg-light py-5" id="contact">
-    <div class="contact">
-        <div class="social-media mb-2">
-            <a href="https://www.facebook.com/MG.gaiten" class="fs-4 px-3"><i class="bi bi-facebook"></i></i></a>
-            <a href="https://www.instagram.com/heyy.maaaark" class="fs-4 px-3"><i class="bi bi-instagram"></i></i></a>
-            <a href="https://www.discordapp.com/users/697488937861644300" class="fs-4 px-3"><i
-                    class="bi bi-discord"></i></i></a>
-            <a href="https://www.linkedin.com/in/mark-gaiten-a21340306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                class="fs-4 px-3"><i class="bi bi-linkedin"></i></i></a>
+    <!-- ═══════════ ABOUT ═══════════ -->
+    <section id="about">
+        <div class="container">
+            <p class="section-label">Who I Am</p>
+            <h2 class="section-title">About Me</h2>
+
+            <div class="row g-5">
+                <!-- Info Column -->
+                <div class="col-md-5">
+                    <div class="info-row">
+                        <div class="info-item">
+                            <span class="info-label">Full Name</span>
+                            <span class="info-value">Mark Roland A. Gaiten</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Phone</span>
+                            <span class="info-value">0947-868-2766</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Email</span>
+                            <span class="info-value"> markgaiten26@gmail.com </span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">School</span>
+                            <span class="info-value">PUP – Santo Tomas Campus</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Program</span>
+                            <span class="info-value">BS Information Technology · 4th Year</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bio Column -->
+                <div class="col-md-7">
+                    <p class="about-bio">
+                        A fourth-year Information Technology student with a strong interest in Science and Technology.
+                        An outgoing
+                        and curious individual for exploring new places, socializing, and learning new skills. I have a
+                        creative
+                        side that thrives in designing projects — from tech-related activities to personal hobbies like
+                        organizing
+                        layouts. Aiming to achieve financial stability and advance my career while traveling and gaining
+                        new
+                        experiences.
+                    </p>
+                </div>
+            </div>
+
         </div>
-    </div>
-</section>
+    </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+    <!-- ═══════════ PROJECTS ═══════════ -->
+    <section id="projects">
+        <div class="container">
+            <p class="section-label">My Work</p>
+            <h2 class="section-title">Projects</h2>
+
+            <div class="row g-4">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="project-card">
+                        <img src="A05/image/a05.png" class="card-img-top" alt="Persona Isle of Mark"
+                            onerror="this.style.background='var(--surface)';this.removeAttribute('src')">
+                        <div class="card-body">
+                            <span class="card-number">Activity 05</span>
+                            <h5 class="card-title"> Core Memories </h5>
+                            <p class="card-text">Welcome to the site where cherished core memories come alive, preserving moments that shape the essence of who we are.</p>
+                            <a href="A05/index.php" class="btn-card" target="_blank"
+                                rel="noopener noreferrer">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ CONTACT ═══════════ -->
+    <section id="contact">
+        <div class="container text-center">
+            <div>
+                <a href="https://www.facebook.com/MG.gaiten" class="social-link" title="Facebook">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/heyy.maaaark" class="social-link" title="Instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="https://www.discordapp.com/users/697488937861644300" class="social-link" title="Discord">
+                    <i class="bi bi-discord"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mark-gaiten-a21340306" class="social-link" title="LinkedIn">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+            </div>
+
+            <p class="footer-note">© 2024 Mark Roland A. Gaiten </p>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
