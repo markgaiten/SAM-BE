@@ -4,12 +4,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Epic: The Musical </title>
+    <title>Epic: The Musical</title>
     <link rel="icon" href="asset/images/epic.jpeg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <style>
+        /* Sea Palette */
+        :root {
+            --midnight: #0D1F3C;
+            --aegean: #1B4B8A;
+            --seafoam: #7EB8C9;
+            --gold: #C9A84C;
+            --parchment: #F2ECD8;
+
+            --gold-glow: rgba(201, 168, 76, 0.3);
+            --aegean-dark: #122a52;
+        }
+
         @font-face {
             font-family: 'OlympicHeadline-Regular';
             src: url('asset/fonts/OlympicHeadline-Regular.ttf') format('truetype');
@@ -20,33 +32,51 @@
             src: url('asset/fonts/OlympicSans.ttf') format('truetype');
         }
 
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
         body,
         html {
             height: 100%;
+            background-color: var(--midnight);
+            color: var(--parchment);
+            margin: 0;
         }
 
         .h {
             text-align: center;
-            margin: 20px 0;
+            padding: 40px 0 10px;
             font-family: 'OlympicHeadline-Regular';
-            color: rgba(0, 120, 208);
+            color: var(--gold);
         }
 
         /* NAVBAR */
         #nav-bar {
             font-family: 'OlympicHeadline-Regular';
-            position: sticky;
-            top: 0;
-            z-index: 10;
         }
 
         .navbar {
             padding-left: 10%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--midnight) !important;
+            border-bottom: 1px solid var(--aegean);
         }
 
+        body {
+            padding-top: 60px;
+        }
         .navbar-brand {
             font-size: 20px;
-            color: rgba(0, 120, 208);
+            color: var(--gold) !important;
+            letter-spacing: 0.06em;
         }
 
         .navbar-nav {
@@ -58,15 +88,26 @@
         }
 
         .navbar-nav li a {
-            color: rgba(0, 120, 208);
-            font-weight: 100;
-            text-align: center;
+            color: var(--parchment) !important;
             font-size: 18px;
+            transition: color 0.2s;
+        }
+
+        .navbar-nav li a:hover {
+            color: var(--gold) !important;
+        }
+
+        .navbar-toggler {
+            border-color: var(--aegean);
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
         }
 
         /* HERO */
         .hero-image {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("asset/images/hero.jpg");
+            background-image: linear-gradient(rgba(13, 31, 60, 0.55), rgba(27, 75, 138, 0.65)), url("asset/images/hero.jpg");
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -81,12 +122,23 @@
             top: 70%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white;
+            color: var(--parchment);
+            width: 90%;
         }
 
         .hero-text h1 {
             font-size: 80px;
             font-family: 'OlympicHeadline-Regular';
+            color: var(--gold);
+            text-shadow: 0 0 60px var(--gold-glow), 0 2px 6px rgba(0, 0, 0, 0.7);
+            letter-spacing: 0.05em;
+        }
+
+        .hero-text p {
+            color: var(--parchment);
+            font-size: 1.15rem;
+            letter-spacing: 0.1em;
+            opacity: 0.88;
         }
 
         @media (max-width: 1200px) {
@@ -123,15 +175,17 @@
 
         /* ABOUT */
         #about {
-            color: rgba(0, 120, 208);
-            padding-top: 10px;
+            background-color: var(--aegean-dark);
+            padding: 20px 0 60px;
+            border-top: 1px solid var(--aegean);
+            border-bottom: 1px solid var(--aegean);
         }
 
         .desc {
             font-size: 20pt;
             line-height: 16pt;
-            text-align: center;
             font-family: 'OlympicHeadline-Regular';
+            color: var(--gold);
         }
 
         .name {
@@ -139,6 +193,7 @@
             font-size: 15pt;
             line-height: 20pt;
             text-align: left;
+            color: var(--parchment);
         }
 
         .img-fluid {
@@ -146,145 +201,253 @@
             height: auto;
             display: block;
             padding: 30px;
+            border-radius: 10px;
         }
 
         .spotify-button {
             font-family: 'OlympicHeadline-Regular';
             display: inline-block;
-            padding: 10px 20px;
-            background-color: rgba(0, 120, 208);
-            color: white;
+            padding: 12px 28px;
+            background-color: var(--gold);
+            color: var(--midnight);
             text-decoration: none;
             border-radius: 5px;
             font-size: 16px;
-            transition: background-color 0.3s;
+            letter-spacing: 0.06em;
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
 
         .spotify-button:hover {
-            background-color: rgba(0, 120, 208, 0.30);
+            background-color: var(--parchment);
+            color: var(--midnight);
+            box-shadow: 0 4px 18px var(--gold-glow);
         }
 
         /* CHARACTERS */
-        .scroll-container {
-            background-color: rgba(0, 180, 235, 0.25);
-            overflow: hidden;
-            white-space: nowrap;
-            padding: 10px;
+        #character {
+            background-color: var(--midnight);
+            padding-bottom: 50px;
+        }
+
+        .carousel-wrapper {
             position: relative;
+            padding: 0 48px;
+        }
+
+        .scroll-container {
+            background-color: rgba(27, 75, 138, 0.15);
+            overflow: hidden;
+            border: 1px solid var(--aegean);
+            border-radius: 8px;
+            padding: 10px 4px;
         }
 
         .scroll-content {
-            display: inline-block;
-            transition: transform 0.5s ease;
+            display: flex;
+            transition: transform 0.45s ease;
+            will-change: transform;
         }
 
         .image-container {
-            position: relative;
-            width: 100%;
-            max-width: 200px;
-            display: inline-block;
-            margin: 10px;
+            flex: 0 0 200px;
+            margin: 10px 8px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--aegean);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .image-container:hover {
+            border-color: var(--gold);
+            box-shadow: 0 4px 20px var(--gold-glow);
         }
 
         .image {
             width: 100%;
-            height: auto;
+            height: 200px;
+            object-fit: cover;
             display: block;
         }
 
         .overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
+            inset: 0;
+            background: linear-gradient(to top, rgba(13, 31, 60, 0.93) 0%, rgba(27, 75, 138, 0.2) 100%);
+            color: var(--gold);
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.35s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: 'OlympicHeadline-Regular';
+            font-size: 1rem;
+            letter-spacing: 0.07em;
+        }
+
+        .image-container {
+            position: relative;
         }
 
         .image-container:hover .overlay {
             opacity: 1;
         }
 
-        .scroll-button {
+        .scroll-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
-            padding: 10px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--aegean);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            border-radius: 50%;
             cursor: pointer;
-            z-index: 1;
+            font-size: 1rem;
+            transition: background-color 0.2s, color 0.2s;
+            z-index: 2;
+            user-select: none;
+        }
+
+        .scroll-btn:hover {
+            background-color: var(--gold);
+            color: var(--midnight);
+        }
+
+        .scroll-btn.left {
+            left: 0;
+        }
+
+        .scroll-btn.right {
+            right: 0;
         }
 
         /* SAGA */
-        .card-container {
+        #saga {
+            background-color: var(--aegean-dark);
+            padding-bottom: 70px;
+            border-top: 1px solid var(--aegean);
+        }
+
+        .saga-grid {
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin: 20px;
+            flex-direction: column;
+            gap: 24px;
+            padding: 20px 40px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .card {
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 10px;
+        .saga-row {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .saga-card {
+            background-color: var(--midnight);
+            border: 1px solid var(--aegean);
+            border-radius: 10px;
+            overflow: hidden;
             cursor: pointer;
-            transition: box-shadow 0.3s;
-            flex: 1 1 calc(25% - 20px);
-            max-width: calc(25% - 20px);
-            box-sizing: border-box;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 calc(20% - 20px);
+            min-width: 160px;
+            max-width: 210px;
         }
 
-        .card-text {
+        .saga-row:last-child .saga-card {
+            flex: 0 0 calc(25% - 20px);
+            max-width: 220px;
+        }
+
+        .saga-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 32px var(--gold-glow);
+            border-color: var(--gold);
+        }
+
+        .saga-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 2px solid var(--aegean);
+            transition: border-color 0.3s;
+        }
+
+        .saga-card-body {
+            padding: 14px 16px;
             text-align: center;
             font-family: 'OlympicSans';
+            color: var(--seafoam);
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .card:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        .saga-card:hover img {
+            border-color: var(--gold);
         }
 
         @media (max-width: 768px) {
-            .card {
-                flex: 1 1 calc(50% - 20px);
-                max-width: calc(50% - 20px);
+            .saga-row {
+                flex-wrap: wrap;
+            }
+
+            .saga-card,
+            .saga-row:last-child .saga-card {
+                flex: 0 0 calc(50% - 12px);
+                max-width: calc(50% - 120px);
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .saga-card,
+            .saga-row:last-child .saga-card {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .saga-grid {
+                padding: 16px 20px;
+                gap: 16px;
+            }
+
+            .carousel-wrapper {
+                padding: 0 36px;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- HEADER -->
+
+    <!-- NAVBAR -->
     <section id="nav-bar">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">EPIC: THE MUSICAL</a>
+                <a class="navbar-brand" href="index.html"> EPIC: THE MUSICAL </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#character">Character</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#saga">Saga</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#home"> Home </a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about"> About </a></li>
+                        <li class="nav-item"><a class="nav-link" href="#character"> Characters </a></li>
+                        <li class="nav-item"><a class="nav-link" href="#saga"> Sagas </a></li>
                     </ul>
                 </div>
             </div>
@@ -295,8 +458,8 @@
     <section>
         <div class="hero-image" id="home">
             <div class="hero-text">
-                <h1>EPIC: THE MUSICAL</h1>
-                <p>An adaptation of Homer's <i>The Odyssey!</i></p>
+                <h1> EPIC: THE MUSICAL </h1>
+                <p> An adaptation of Homer's <i> The Odyssey! </i></p>
             </div>
         </div>
     </section>
@@ -304,108 +467,93 @@
     <!-- ABOUT -->
     <section id="about">
         <div class="h">
-            <h1>About Epic: The Musical</h1>
+            <h1> About Epic: The Musical </h1>
         </div>
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 d-flex justify-content-center">
-                    <img src="asset/images/jorge.jpg" class="img-fluid">
+                    <img src="asset/images/jorge.jpg" class="img-fluid" alt="Jorge Rivera-Herrans">
                 </div>
                 <div class="col-md-6">
-                    <p class="name mt-5">Epic: The Musical is a musical adaptation of Homer's <i>The Odyssey</i> created
-                        by <span class="desc">Jorge Rivera-Herrans</span>.</p>
-                    <p class="name">The creation of the musical was documented through Jorge's TikTok, and the song
+                    <p class="name mt-5"> Epic: The Musical is a musical adaptation of Homer's <i> The Odyssey </i>
+                        created by <span class="desc"> Jorge Rivera-Herrans </span></p>
+                    <p class="name"> The creation of the musical was documented through Jorge's TikTok, and the song
                         clips and process videos have gone viral on social media.</p>
-                    <p class="name">Jorge Rivera-Herrans started working on the musical around June of 2019 for his
+                    <p class="name"> Jorge Rivera-Herrans started working on the musical around June of 2019 for his
                         senior thesis for college. He wanted to create a musical inspired by video games and anime to
-                        "emulate their addictive sense of progression".</p>
-                    <p class="name">EPIC was originally going to be an adaptation of both The Iliad and The Odyssey,
+                        "emulate their addictive sense of progression"</p>
+                    <p class="name"> EPIC was originally going to be an adaptation of both The Iliad and The Odyssey,
                         which ended up being a huge undertaking that did not work out. Jorge eventually decided to focus
                         on the Odyssey because it has a wider cast and a variety of locations, although he has stated
-                        that he may create a musical based on The Iliad after EPIC has concluded.</p>
+                        that he may create a musical based on The Iliad after EPIC has concluded. </p>
                     <div class="d-flex justify-content-center mt-4">
                         <a href="https://open.spotify.com/playlist/3HvgaZeBWbr7UjFeicPFRI?si=3408409f276f45ee"
-                            class="spotify-button" target="_blank">Listen to Epic Now!</a>
+                            class="spotify-button" target="_blank"> Listen to Epic Now! </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- CHARACTERS -->
     <section id="character">
         <div class="h">
-            <h1>The Characters</h1>
+            <h1> The Character </h1>
         </div>
         <div class="container">
-            <div class="scroll-container">
-                <div class="scroll-content" id="scrollContent">
-                    <div class="image-container">
-                        <img src="asset/images/odysseus.jpg" alt="Odysseus" class="image">
-                        <div class="overlay">
-                            <div class="text">Odysseus</div>
+            <div class="carousel-wrapper">
+                <button class="scroll-btn left" onclick="scrollCarousel(-1)" aria-label="Scroll left"> &#10094;</button>
+
+                <div class="scroll-container">
+                    <div class="scroll-content" id="scrollContent">
+                        <div class="image-container">
+                            <img src="asset/images/odysseus.jpg" alt="Odysseus" class="image">
+                            <div class="overlay">Odysseus</div>
                         </div>
-                    </div>
-                    <div class="image-container">
-                        <img src="asset/images/penelope.jpg" alt="Penelope" class="image">
-                        <div class="overlay">
-                            <div class="text">Penelope</div>
+                        <div class="image-container">
+                            <img src="asset/images/penelope.jpg" alt="Penelope" class="image">
+                            <div class="overlay">Penelope</div>
                         </div>
-                    </div>
-                    <div class="image-container">
-                        <img src="asset/images/telemachus.jpg" alt="Telemachus" class="image">
-                        <div class="overlay">
-                            <div class="text">Telemachus</div>
+                        <div class="image-container">
+                            <img src="asset/images/telemachus.jpg" alt="Telemachus" class="image">
+                            <div class="overlay">Telemachus</div>
                         </div>
-                    </div>
-                    <div class="image-container">
-                        <img src="asset/images/athena.jpg" alt="Athena" class="image">
-                        <div class="overlay">
-                            <div class="text">Athena</div>
+                        <div class="image-container">
+                            <img src="asset/images/athena.jpg" alt="Athena" class="image">
+                            <div class="overlay">Athena</div>
                         </div>
-                    </div>
-                    <div class="image-container">
-                        <img src="asset/images/poseidon.jpg" alt="Poseidon" class="image">
-                        <div class="overlay">
-                            <div class="text">Poseidon</div>
+                        <div class="image-container">
+                            <img src="asset/images/poseidon.jpg" alt="Poseidon" class="image">
+                            <div class="overlay">Poseidon</div>
                         </div>
-                    </div>
-                    <div class="image-container">
-                        <img src="asset/images/eurylochus.jpg" alt="Eurylochus" class="image">
-                        <div class="overlay">
-                            <div class="text">Eurylochus</div>
+                        <div class="image-container">
+                            <img src="asset/images/eurylochus.jpg" alt="Eurylochus" class="image">
+                            <div class="overlay">Eurylochus</div>
                         </div>
-                    </div>
-                    <div class="image-container">
-                        <img src="asset/images/calypso.jpg" alt="Calypso" class="image">
-                        <div class="overlay">
-                            <div class="text">Calypso</div>
+                        <div class="image-container">
+                            <img src="asset/images/calypso.jpg" alt="Calypso" class="image">
+                            <div class="overlay">Calypso</div>
                         </div>
-                    </div>
-                    <div class="image-container">
-                        <img src="asset/images/antinous.jpg" alt="Antinous" class="image">
-                        <div class="overlay">
-                            <div class="text">Antinous</div>
+                        <div class="image-container">
+                            <img src="asset/images/antinous.jpg" alt="Antinous" class="image">
+                            <div class="overlay">Antinous</div>
                         </div>
-                    </div>
-                    <div class="image-container">
-                        <img src="asset/images/circe.jpg" alt="Circe" class="image">
-                        <div class="overlay">
-                            <div class="text">Circe</div>
+                        <div class="image-container">
+                            <img src="asset/images/circe.jpg" alt="Circe" class="image">
+                            <div class="overlay">Circe</div>
                         </div>
-                    </div>
-                    <div class="image-container">
-                        <img src="asset/images/polites.jpg" alt="Polites" class="image">
-                        <div class="overlay">
-                            <div class="text">Polites</div>
+                        <div class="image-container">
+                            <img src="asset/images/polites.jpg" alt="Polites" class="image">
+                            <div class="overlay">Polites</div>
                         </div>
-                    </div>
-                    <div class="image-container">
-                        <img src="asset/images/tiresias.jpg" alt="Tiresias" class="image">
-                        <div class="overlay">
-                            <div class="text">Tiresias</div>
+                        <div class="image-container">
+                            <img src="asset/images/tiresias.jpg" alt="Tiresias" class="image">
+                            <div class="overlay">Tiresias</div>
                         </div>
                     </div>
                 </div>
-                <button class="scroll-button right" onclick="scrollRight()">&#10095;</button>
+
+                <button class="scroll-btn right" onclick="scrollCarousel(1)" aria-label="Scroll right">&#10095;</button>
             </div>
         </div>
     </section>
@@ -413,84 +561,78 @@
     <!-- SAGA -->
     <section id="saga">
         <div class="h">
-            <h1 class="mt-5">The Sagas</h1>
+            <h1 class="mt-2"> The Sagas </h1>
         </div>
-        <div class="card-container">
-            <div class="card-container">
-                <div class="card" style="width: 18rem;">
-                    <img src="asset/images/troy.jpg" class="card-img-top" alt="The Troy Saga">
-                    <div class="card-body">
-                        <p class="card-text"> The Troy Saga </p>
-                    </div>
+
+        <div class="saga-grid">
+            <div class="saga-row">
+                <div class="saga-card">
+                    <img src="asset/images/troy.jpg" alt="The Troy Saga">
+                    <div class="saga-card-body"> The Troy Saga </div>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="asset/images/cyclops.jpg" class="card-img-top" alt="The Cyclops Saga">
-                    <div class="card-body">
-                        <p class="card-text"> The Cyclops Saga</p>
-                    </div>
+                <div class="saga-card">
+                    <img src="asset/images/cyclops.jpg" alt="The Cyclops Saga">
+                    <div class="saga-card-body"> The Cyclops Saga </div>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="asset/images/ocean.jpg" class="card-img-top" alt="The Ocean Saga">
-                    <div class="card-body">
-                        <p class="card-text">The Ocean Saga</p>
-                    </div>
+                <div class="saga-card">
+                    <img src="asset/images/ocean.jpg" alt="The Ocean Saga">
+                    <div class="saga-card-body"> The Ocean Saga </div>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="asset/images/circesaga.jpg" class="card-img-top" alt="The Circe Saga">
-                    <div class="card-body">
-                        <p class="card-text">The Circe Saga</p>
-                    </div>
+                <div class="saga-card">
+                    <img src="asset/images/circesaga.jpg" alt="The Circe Saga">
+                    <div class="saga-card-body"> The Circe Saga </div>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="asset/images/underworld.jpg" class="card-img-top" alt="The Underworld Saga">
-                    <div class="card-body">
-                        <p class="card-text"> The Underworld Saga</p>
-                    </div>
+                <div class="saga-card">
+                    <img src="asset/images/underworld.jpg" alt="The Underworld Saga">
+                    <div class="saga-card-body"> The Underworld Saga </div>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="asset/images/thunder.jpg" class="card-img-top" alt="The Thunder Saga">
-                    <div class="card-body">
-                        <p class="card-text"> The Thunder Saga</p>
-                    </div>
+            </div>
+
+            <div class="saga-row">
+                <div class="saga-card">
+                    <img src="asset/images/thunder.jpg" alt="The Thunder Saga">
+                    <div class="saga-card-body"> The Thunder Saga </div>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="asset/images/wisdom.jpg" class="card-img-top" alt="The Wisdom Saga">
-                    <div class="card-body">
-                        <p class="card-text"> The Wisdom Saga</p>
-                    </div>
+                <div class="saga-card">
+                    <img src="asset/images/wisdom.jpg" alt="The Wisdom Saga">
+                    <div class="saga-card-body"> The Wisdom Saga </div>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="asset/images/vengeance.jpg" class="card-img-top" alt="The Vengeance Saga">
-                    <div class="card-body">
-                        <p class="card-text">The Vengeance Saga</p>
-                    </div>
+                <div class="saga-card">
+                    <img src="asset/images/vengeance.jpg" alt="The Vengeance Saga">
+                    <div class="saga-card-body"> The Vengeance Saga </div>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="asset/images/ithaca.jpg" class="card-img-top" alt="The Ithaca Saga">
-                    <div class="card-body">
-                        <p class="card-text"> The Ithaca Saga</p>
-                    </div>
+                <div class="saga-card">
+                    <img src="asset/images/ithaca.jpg" alt="The Ithaca Saga">
+                    <div class="saga-card-body"> The Ithaca Saga </div>
                 </div>
+            </div>
+        </div>
     </section>
 
     <script>
-        let scrollAmount = 0;
         const scrollContent = document.getElementById('scrollContent');
-        const imageWidth = 220;
+        const CARD_WIDTH = 216;
+        let currentIndex = 0;
 
-        function scrollRight() {
-            scrollAmount -= imageWidth;
-            const totalImages = document.querySelectorAll('.image-container').length;
-            if (scrollAmount < -((totalImages - 1) * imageWidth)) {
-                scrollAmount = 0;
-            }
-            scrollContent.style.transform = `translateX(${scrollAmount}px)`;
+        function getVisibleCount() {
+            const containerWidth = scrollContent.parentElement.offsetWidth;
+            return Math.floor(containerWidth / CARD_WIDTH);
+        }
+
+        function scrollCarousel(direction) {
+            const cards = scrollContent.querySelectorAll('.image-container');
+            const total = cards.length;
+            const visible = getVisibleCount();
+            const maxIndex = total - visible;
+
+            currentIndex += direction;
+
+            if (currentIndex < 0) currentIndex = maxIndex;
+            if (currentIndex > maxIndex) currentIndex = 0;
+
+            scrollContent.style.transform = `translateX(-${currentIndex * CARD_WIDTH}px)`;
         }
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
